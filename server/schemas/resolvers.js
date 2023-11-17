@@ -4,8 +4,9 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 // Matches the typeDefs entry point and informs the request of the relevant data
 const resolvers = {
     Query: {
-        me: async (parent, { username }) => {
-            return User.findOne({ username });
+        me: async (parent, args, context) => {
+            const userData = await User.findOne({ _id: context.user._id }).select('-__v -password')
+            return userData;
         },
     },
     Mutation: {
@@ -31,22 +32,28 @@ const resolvers = {
 
             return { token, user };
         },
-        saveBook: async (parent, { bookData, bookId }) => {
-            const book = await Book.create({ bookData, bookId });
-
-            await User.findOneAndUpdate(
-                { username: bookData },
-                { $addToSet: { books: book._id } }
+        saveBook: async (parent, { bookData }, context) => {
+            if (context.user) {
+            const updatedUser = await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { savedBooks: bookData } }
             );
 
-            return book;
+            return updatedUser;
+            }
+            throw AuthenticationError;
         },
-        removeBook: async (parent, { bookId, bookData }) => {
-            return Book.findOneAndUpdate(
-                { _id: bookId },
-                { $pull: { books: { _id: bookId } } },
+        removeBook: async (parent, { bookId }, context) => {
+            if (context.user) {
+
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { books: { savedBooks: { bookId } } } },
                 { new: true }
             );
+            return updatedUser;
+            }
+            throw AuthenticationError;
         },
     },
 };
