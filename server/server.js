@@ -4,6 +4,7 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 
 const { typeDefs, resolvers } = require('./schemas');
+const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 
 // TODO: delete unnecessary code that was needed before refactor
@@ -21,6 +22,9 @@ const startApolloServer = async () => {
 
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+  app.use('/graphql', expressMiddleware(server, {
+    context: authMiddleware
+  }));
 
   app.use('/graphql', expressMiddleware(server));
   
