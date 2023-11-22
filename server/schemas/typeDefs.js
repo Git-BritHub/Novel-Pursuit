@@ -22,7 +22,6 @@ type Auth {
   }
 
 input bookInput {
-    bookId: ID!
     authors: [String]
     description: String!
     image: String
