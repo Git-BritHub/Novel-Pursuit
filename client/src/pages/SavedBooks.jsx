@@ -15,7 +15,7 @@ import {
 const SavedBooks = () => {
 
   const {loading,data} = useQuery(QUERY_GET_ME);
-  const [removeBook] = useMutation(REMOVE_BOOK);
+  const [removeBook, {error}] = useMutation(REMOVE_BOOK);
   const userData = data?.me || {};
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   if (!token) {
@@ -31,11 +31,12 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await removeBook(bookId, token);
+      console.log(bookId)
+      const {data} = await removeBook({variables: {bookId},});
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
       // const updatedUser = await response.json();
       // setUserData(updatedUser);
