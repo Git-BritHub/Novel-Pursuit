@@ -1,6 +1,6 @@
 # Novel-Pursuit
 Refactored Book Search Engine 
-[Novel Pursuit Deployed Website](novel-pursuit-production.up.railway.app)
+[Novel Pursuit Deployed Website](https://novel-pursuit-production.up.railway.app/)
 
 ## Table of Contents
 * [Description](#description)
@@ -23,7 +23,7 @@ Novel Pursuit is a refactored Google Books API search engine. While originally b
 5. Once your `.env` file is created, make sure to set up your SECRET and EXPIRATION keys. 
 
 ## Usage
-1. Input `npm run develop` in your terminal to run program locally or visit deployed website at novel-pursuit-production.up.railway.app
+1. Input `npm run develop` in your terminal to run program locally or visit deployed website at https://novel-pursuit-production.up.railway.app/
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-aqua.svg)](https://opensource.org/licenses/MIT)
