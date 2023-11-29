@@ -31,7 +31,7 @@ Novel Pursuit is a refactored Google Books API search engine. While originally b
 ## Contributing
 * https://legacy.reactjs.org/docs/hooks-effect.html#effects-with-cleanup
 * https://github.com/coding-boot-camp/solid-broccoli.git
-* Guidance and feedback from Software Developers: Dru Sanchez and CJ Sanders.
+* Guidance and feedback from Software Developers: Dru Sanchez, CJ Sanders, and PJ Rasmussen.
 
 ## Questions
 If you find any bugs or have any questions, feel free to reach out to me through GitHub at https://github.com/Git-BritHub 
