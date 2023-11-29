@@ -25,6 +25,9 @@ Novel Pursuit is a refactored Google Books API search engine. While originally b
 ## Usage
 1. Input `npm run develop` in your terminal to run program locally or visit deployed website at https://novel-pursuit-production.up.railway.app/
 
+<img width="1512" alt="novelPursuitScreenshot" src="https://github.com/Git-BritHub/Novel-Pursuit/assets/130286884/559cfcdc-683b-4d55-a792-8c09f48641ff">
+
+
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-aqua.svg)](https://opensource.org/licenses/MIT)
 
